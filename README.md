@@ -81,7 +81,7 @@ npm rebuild
 
 ## 👨‍💻 Author
 
-Made with ❤️ by Roshan Dhiman
+Made with ❤️ by Roshanpreet Singh Dhiman and Mathely Mittal
 
 ---
 
