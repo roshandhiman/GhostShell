@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>GhostShell</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xterm/xterm/css/xterm.css" />
+  <style>
+    body {
+      margin: 0;
+      background: #0d1117; /* GitHub dark */
+    }
+    #terminal {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@xterm/xterm/lib/xterm.js"></script>
+  <script>
+    const { ipcRenderer } = require("electron");
+
+    const term = new Terminal({
+      cursorBlink: true,
+      fontSize: 14,
+      fontFamily: "Menlo, Monaco, monospace",
+      theme: {
+        background: "#0d1117",
+        foreground: "#c9d1d9",
+        cursor: "#58a6ff",
+
+        black: "#010409",
+        red: "#ff7b72",
+        green: "#3fb950",
+        yellow: "#d29922",
+        blue: "#58a6ff",
+        magenta: "#bc8cff",
+        cyan: "#39c5cf",
+        white: "#b1bac4"
+      }
+    });
+
+    term.open(document.getElementById("terminal"));
+    term.focus();
+
+    term.onData(data => {
+      ipcRenderer.send("terminal-input", data);
+    });
+
+    ipcRenderer.on("terminal-output", (event, data) => {
+      term.write(data);
+    });
+  </script>
+</body>
+</html>

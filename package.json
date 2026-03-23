@@ -1,0 +1,13 @@
+{
+  "name": "ghostshell",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "@xterm/xterm": "^6.0.0",
+    "electron": "^41.0.3",
+    "node-pty": "^1.1.0"
+  }
+}
